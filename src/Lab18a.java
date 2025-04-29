@@ -19,42 +19,44 @@ public class Lab18a {
 
             // Split string
             String[] inputArray = inputString.split(" ");
-            int[] intArray = {Integer.parseInt(inputArray[0]), Integer.parseInt(inputArray[1])};
+            int m = Integer.parseInt(inputArray[0]);
+            int n = Integer.parseInt(inputArray[1]);
 
-            getGCD(intArray);
-            }
-
-        }
-
-
-
-
-
-
-
-    // Make larger number first
-    private static void setLargerNumFirst (int[] intArray) {
-            if (intArray[M] < intArray[N])  {
-                int temp = intArray[M];
-                intArray[M] = intArray[N];
-                intArray[N] = temp;
-            }
-        }
-    // Get CGD recursively
-    private static void getGCD(int[] intArray) {
-        setLargerNumFirst(intArray);
-        System.out.printf("Entering GCD method:  m = %d,  n = %d)\n", intArray[M], intArray[N]);
-
-        if (intArray[M] % intArray[N] == 0) {
-            System.out.printf("Returning GCD value = 1 (BASE CASE:  m = %d,  n = %d)\n", intArray[M], intArray[N]);
-        }
-        else    {
-            intArray[M] = intArray[N];
-            intArray[N] = intArray[M] % intArray[N];
+            // Show GCD
+            System.out.printf("The GCD of %d and %d is %d\n\n", m, n, getGCD(m, n));
         }
 
     }
 
+
+
+
+
+    // Get GCD recursively
+    private static int getGCD(int m, int n) {
+        System.out.printf("Entering GCD method:  m = %d,  n = %d\n", m, n);
+
+        int gcd = 1;
+        int remainder = m % n;
+        boolean isBase = false;
+
+        // Call method again with new values
+        if (remainder != 0)
+            gcd = getGCD(n, remainder);
+        else {
+            gcd = n;
+            isBase = true;
+        }
+
+        System.out.printf("Returning GCD value = %d (%s case:  m = %d,  n = %d)\n",
+                gcd, isBase ? "BASE" : "Recursive", m, n);
+
+        return gcd;
+
+    }
+
 }
+
+
 
 
