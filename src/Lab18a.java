@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class Lab18a {
-    // Constants For int array
-    private static final int M = 0;
-    private static final int N = 1;
-
     public static void main(String[] args)  {
         Scanner input = new Scanner(System.in);
 
@@ -36,7 +32,7 @@ public class Lab18a {
     private static int getGCD(int m, int n) {
         System.out.printf("Entering GCD method:  m = %d,  n = %d\n", m, n);
 
-        int gcd = 1;
+        int gcd;
         int remainder = m % n;
         boolean isBase = false;
 
